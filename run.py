@@ -21,6 +21,7 @@
 import os
 import pickle
 import shutil
+import sys
 
 #constants
 INTEGRATE_HOME = 'cp run.py ~/'
@@ -62,6 +63,8 @@ def register_menu_choice():
 		show_eos_menu()
 	elif os_choice == '3':
 		show_arch_menu()
+	elif os_choice == 'x':
+		sys.exit()
 	else:
 		os_subroutine()
 
@@ -84,6 +87,7 @@ def command(the_command):
 
 def os_subroutine():
 	show_main_menu()
+	register_menu_choice()
 
 def ubuntu_subroutine():
 	show_ubuntu_menu()
@@ -171,6 +175,7 @@ def register_command(the_choice):
 	# u - ubuntu choices
 	# e - eos choices
 	# a - arch choices
+	pass
 
 if __name__ == '__main__':
 	main()
