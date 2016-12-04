@@ -36,7 +36,7 @@ COMMAND_FILEZILLA = "sudo add-apt-repository ppa:n-muench/programs-ppa && sudo a
 
 def main():
 	# ask users if they want to copy run.py to home directory
-	home_system_integration():
+	home_system_integration()
 	# os_subroutine --> Calls the os asking routine to the users
 	os_subroutine()
 
