@@ -25,9 +25,13 @@ import ast
 
 #constants
 INTEGRATE_HOME = 'cp run.py ~/'
+COMMAND_EXECUTE_APT_MENU = 'chmod +x puppet-apt-list.sh && ./puppet-apt-list.sh'
 COMMANDS_CL_FILE = 'puppet.cl'
+COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
 COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet.cl'
+COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet-apt-list.sh'
 CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
+PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
 
 # commands
 # COMMAND_E_TWEAKS_LOKI = "sudo apt install software-properties-common && sudo add-apt-repository ppa:philip.scott/elementary-tweaks && sudo apt update && sudo apt install elementary-tweaks -y"
@@ -93,9 +97,12 @@ def get_cl():
 	if is_cl_present() is True:
 		print 'Deleting old command list ..'
 		os.remove(CL_PATH)
+		os.remove(PAL_PATH)
 		command(COMMAND_GET_CL)
+		command(COMMAND_GET_PAL)
 	else:
 		command(COMMAND_GET_CL)
+		command(COMMAND_GET_PAL)
 
 	command('clear')
 	print 'Commands list fetched !'
@@ -126,27 +133,8 @@ def arch_subroutine():
 
 def show_apt_menu():
 	command('clear')
-	print ' '
-	print ' -------------------------------------------------------- '
-	print ' '
-	print ' Options:'
-	print ' '
-	print ' ===== SYSTEM ====='
-	print ' 1. Install elementary tweaks [Loki]'
-	print ' 2. Install elementary tweaks [Freya]'
-	print ' 3. Install elementary tweaks [Luna]'
-	print ' 4. Install git'
-	print ' 5. Install Gnome Disk Utility'
-	print ' ===== WEB ====='
-	print ' 6. Install Filezilla'
-	print ' 7. Install Google Chrome'
-	print ' ===== EDITOR ====='
-	print ' 8. Install Sublime Text 3'
-	print ' 9. Install Atom'
-	print ' ===== MEDIA ====='
-	print ' 10. Install vlc'
-	print ' -------------------------------------------------------- '
-	print ' x. Exit'
+	command(COMMAND_EXECUTE_APT_MENU)
+
 
 def register_apt_choice():
 	choices = {}
@@ -227,7 +215,7 @@ def execute_command(the_pm, the_choice):
 
 def is_cl_present():
 	# get the current directory of the
-	return os.path.exists(CL_PATH)
+	return os.path.exists(CL_PATH) or os.path.exists(PAL_PATH)
 
 def is_os_64bit():
     return platform.machine().endswith('64')
