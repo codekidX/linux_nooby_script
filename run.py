@@ -210,12 +210,11 @@ def execute_command(the_pm, the_choice):
 
 	if cl_choice is 'ax' or 'px':
 		sys.exit()
-
-
-	# all hail the mighty script execute_command starts NOW !!!
-	command(cl_dict[cl_choice])
-	# clear screen after each command
-	command('clear')
+	else:
+		# all hail the mighty script execute_command starts NOW !!!
+		command(cl_dict[cl_choice])
+		# clear screen after each command
+		command('clear')
 
 def is_cl_present():
 	# get the current directory of the
