@@ -24,14 +24,14 @@ import sys
 import ast
 
 #constants
-INTEGRATE_HOME = 'cp run.py ~/'
-COMMAND_EXECUTE_APT_MENU = 'chmod +x puppet-apt-list.sh && ./puppet-apt-list.sh'
-COMMANDS_CL_FILE = 'puppet.cl'
-COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
-COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet.cl'
-COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet-apt-list.sh'
-CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
-PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
+INTEGRATE_HOME = 'cp puppet.py ~/'
+COMMANDS_CL_FILE = None
+COMMANDS_PAL_FILE = None
+COMMAND_GET_CL = None
+COMMAND_GET_PAL = None
+CL_PATH = None
+PAL_PATH = None
+
 
 # commands
 # COMMAND_E_TWEAKS_LOKI = "sudo apt install software-properties-common && sudo add-apt-repository ppa:philip.scott/elementary-tweaks && sudo apt update && sudo apt install elementary-tweaks -y"
@@ -43,15 +43,47 @@ PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
 
 
 def main():
-	# before script subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
-	get_cl()
-	# ask users if they want to copy run.py to home directory
-	home_system_integration()
+	# declare some things as global var
+	global COMMAND_GET_CL
+	global COMMAND_GET_PAL
+	global COMMANDS_CL_FILE
+	global COMMANDS_PAL_FILE
+
+	#finally set path
+	global CL_PATH
+	global PAL_PATH
+	_args = sys.argv
+	if len(_args) > 1:
+		COMMAND_GET_CL = 'wget ' + _args[1] + ' -O puppet.cl'
+		COMMAND_GET_PAL = 'wget ' + _args[2] + ' -O puppet-apt-list.sh'
+		COMMANDS_CL_FILE = 'puppet.cl'
+		COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
+
+		#finally set path
+		CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
+		PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
+		# before script subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
+		get_cl()
+		apt_subroutine()
+	else:
+		# before script subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
+		COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet.cl'
+		COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/master/puppet-apt-list.sh'
+
+		COMMANDS_CL_FILE = 'puppet.cl'
+		COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
+
+		CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
+		PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
+
+		# get_cl()
+		# ask users if they want to copy run.py to home directory
+		home_system_integration()
 
 
-	# os_subroutine --> Calls the os asking routine to the users
-	os_subroutine()
-	# print if cl present
+		# os_subroutine --> Calls the os asking routine to the users
+		os_subroutine()
+
 
 
 def show_main_menu():
@@ -92,9 +124,9 @@ def command(the_command):
 
 def get_cl():
 	print 'Please wait ... '
-	print '%s' % (is_cl_present())
+	existance = is_cl_present()
 	print 'Getting updated commands list'
-	if is_cl_present() is True:
+	if existance is True:
 		print 'Deleting old command list ..'
 		os.remove(CL_PATH)
 		os.remove(PAL_PATH)
@@ -126,6 +158,9 @@ def arch_subroutine():
 	show_arch_menu()
 	register_arch_choice()
 
+def custom_subroutine():
+	pass
+
 ####################################################################
 #                                                                  #
 #                         APT STUFFS                               #
@@ -134,7 +169,7 @@ def arch_subroutine():
 
 def show_apt_menu():
 	command('clear')
-	command(COMMAND_EXECUTE_APT_MENU)
+	command(list_command())
 
 
 def register_apt_choice():
@@ -145,14 +180,16 @@ def register_apt_choice():
 	choice_type = single_or_multiple(apt_choice)
 
 	if choice_type is True:
+		# print 'Entered choice type multiple' #LOG
 		choices = apt_choice.split(',')
 		for i in range(0, len(choices)):
 			execute_command('a', choices[i])
 	else:
+		# print 'Entered choice type single' #LOG
 		execute_command('a', apt_choice)
 
 	# show menu agian after all execution complete
-	show_apt_menu()
+	apt_subroutine()
 
 def register_arch_choice():
 	choices = {}
@@ -162,10 +199,12 @@ def register_arch_choice():
 	choice_type = single_or_multiple(apt_choice)
 
 	if choice_type is True:
+		# print 'Entered choice type multiple' #LOG
 		choices = apt_choice.split(',')
 		for i in range(0, len(choices)):
 			execute_command('p', choices[i])
 	else:
+		# print 'Entered choice type multiple' #LOG
 		execute_command('p', apt_choice)
 
 	# show menu agian after all execution complete
@@ -205,16 +244,19 @@ def execute_command(the_pm, the_choice):
 	# Prefixes
 	# a - ubuntu choices
 	# p - arch choices
-
+	# print 'Entered choice execute command' #LOG
 	# first load the file to get commands in the form of dictionary
 	cl_file = open(CL_PATH, 'r')
 	# read cl file
 	cl_str = cl_file.read()
 	# file contents are in the form of <'str'> --> convert it to <'dict'>
 	cl_dict = ast.literal_eval(cl_str)
+	# print type(cl_dict) #LOG
 	# evaluate choice as dictionary key :D
 	cl_choice = the_pm + the_choice
-	# print(cl_dict[cl_choice])
+	# print 'CHOICE: ' + cl_choice #LOG
+	# print cl_dict[cl_choice]
+
 	#                 Choice Restrictor
 	#   -- if there is a os specific choice [append suffix]
 	# ------------------------------------------------------
@@ -226,11 +268,13 @@ def execute_command(the_pm, the_choice):
 			cl_choice.append('_1')
 
 
-	if cl_choice is 'ax' or 'px':
+	if (cl_choice == 'ax' or cl_choice == 'px'):
+		# print 'Entered choice is ax or px' #LOG
 		command('clear')
 		sys.exit()
 	else:
 		# all hail the mighty script execute_command starts NOW !!!
+		# print 'Entered choice execution' #LOG
 		command(cl_dict[cl_choice])
 		# clear screen after each command
 		command('clear')
@@ -244,6 +288,13 @@ def is_os_64bit():
 
 def single_or_multiple(choice):
 	return ',' in choice
+
+def extract_name_from_link(link):
+	last_slash = link.rfind('/') + 1
+	return link[last_slash:len(link)]
+
+def list_command():
+	return 'chmod +x ' + COMMANDS_PAL_FILE + ' && ./' + COMMANDS_PAL_FILE
 	
 
 if __name__ == '__main__':
