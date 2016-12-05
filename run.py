@@ -25,6 +25,8 @@ import sys
 
 #constants
 INTEGRATE_HOME = 'cp run.py ~/'
+COMMANDS_CL_FILE = 'puppet.cl'
+COMMAND_GET_CL 'wget'
 
 # commands
 COMMAND_E_TWEAKS_LOKI = "sudo apt install software-properties-common && sudo add-apt-repository ppa:philip.scott/elementary-tweaks && sudo apt update && sudo apt install elementary-tweaks -y"
@@ -36,21 +38,25 @@ COMMAND_FILEZILLA = "sudo add-apt-repository ppa:n-muench/programs-ppa && sudo a
 
 
 def main():
+	# before os subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
 	# ask users if they want to copy run.py to home directory
 	home_system_integration()
+
+
 	# os_subroutine --> Calls the os asking routine to the users
 	os_subroutine()
+	# print if cl present
 
 
 def show_main_menu():
+	command('clear')
 	print ' '
 	print ' -------------------------------------------------------- '
 	print ' '
 	print ' Choose Linux Distribution:'
 	print ' '
-	print ' 1. Ubuntu [Debian] [apt]'
-	print ' 2. Elementary OS [Debian] [apt]'
-	print ' 3. Arch Linux [Arch] [pacman]'
+	print ' 1. Ubuntu, Elementary OS, Kubuntu, Lubuntu [apt]'
+	print ' 2. Arch Linux, Antergos [pacman]'
 	print ' -------------------------------------------------------- '
 	print ' x. Exit'
 
@@ -58,11 +64,9 @@ def register_menu_choice():
 	os_choice = raw_input('Enter Number [1-3] or [x]: ')
 
 	if os_choice == '1':
-		show_ubuntu_menu()
+		show_apt_menu()
 	elif os_choice == '2':
 		show_eos_menu()
-	elif os_choice == '3':
-		show_arch_menu()
 	elif os_choice == 'x':
 		sys.exit()
 	else:
@@ -73,11 +77,15 @@ def home_system_integration():
 
 	if choice == 'y' or choice == 'Y':
 		command(INTEGRATE_HOME)
+		print 'From next time you can run puppet-script from home directory itself :)'
 	elif choice == 'n' or choice == 'n':
 		print 'OK, moving on ...'
 
 def command(the_command):
 	os.system(the_command)
+
+def get_cl():
+	pass
 
 ####################################################################
 #                                                                  #
@@ -100,44 +108,31 @@ def arch_subroutine():
 
 ####################################################################
 #                                                                  #
-#                         UBUNTU STUFFS                            #
+#                         APT STUFFS                               #
 #                                                                  #
 ####################################################################
 
-def show_ubuntu_menu():
+def show_apt_menu():
+	command('clear')
 	print ' '
 	print ' -------------------------------------------------------- '
 	print ' '
 	print ' Options:'
 	print ' '
-	print ' 1. Install ubuntu tweaks'
-	print ' 2. Install vlc'
-	print ' 3. Install git'
-	print ' 4. Install filezilla'
-	print ' -------------------------------------------------------- '
-	print ' x. Exit'
-
-def register_ubuntu_choice():
-	pass
-
-####################################################################
-#                                                                  #
-#                         EOS STUFFS                               #
-#                                                                  #
-####################################################################
-
-def show_eos_menu():
-	print ' '
-	print ' -------------------------------------------------------- '
-	print ' '
-	print ' Options:'
-	print ' '
+	print ' ===== SYSTEM ====='
 	print ' 1. Install elementary tweaks [Loki]'
 	print ' 2. Install elementary tweaks [Freya]'
 	print ' 3. Install elementary tweaks [Luna]'
-	print ' 4. Install vlc'
-	print ' 5. Install git'
-	print ' 6. Install filezilla'
+	print ' 4. Install git'
+	print ' 5. Install Gnome Disk Utility'
+	print ' ===== WEB ====='
+	print ' 6. Install Filezilla'
+	print ' 7. Install Google Chrome'
+	print ' ===== EDITOR ====='
+	print ' 8. Install Sublime Text 3'
+	print ' 9. Install Atom'
+	print ' ===== MEDIA ====='
+	print ' 10. Install vlc'
 	print ' -------------------------------------------------------- '
 	print ' x. Exit'
 
@@ -148,6 +143,7 @@ def show_eos_menu():
 ####################################################################
 
 def show_arch_menu():
+	command('clear')
 	print ' '
 	print ' -------------------------------------------------------- '
 	print ' '
@@ -176,6 +172,14 @@ def register_command(the_choice):
 	# e - eos choices
 	# a - arch choices
 	pass
+
+def is_cl_present():
+	# get the current directory of the
+	curr_dir = os.path.dirname(os.path.abspath(__file__))
+	return os.path.exists(curr_dir + "/" + COMMANDS_CL_FILE)
+
+def is_os_64bit():
+    return platform.machine().endswith('64')
 
 if __name__ == '__main__':
 	main()
