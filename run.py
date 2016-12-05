@@ -91,7 +91,9 @@ def get_cl():
 	print '%s' % (is_cl_present())
 	print 'Getting updated commands list'
 	if is_cl_present() is True:
-		pass
+		print 'Deleting old command list ..'
+		os.remove(CL_PATH)
+		command(COMMAND_GET_CL)
 	else:
 		command(COMMAND_GET_CL)
 
