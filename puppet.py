@@ -124,6 +124,7 @@ def apt_subroutine():
 
 def arch_subroutine():
 	show_arch_menu()
+	register_arch_choice()
 
 ####################################################################
 #                                                                  #
@@ -152,6 +153,23 @@ def register_apt_choice():
 
 	# show menu agian after all execution complete
 	show_apt_menu()
+
+def register_arch_choice():
+	choices = {}
+	apt_choice = raw_input('Enter Number or [x] \{Multiple installs by inserting commas\}: ')
+
+	# if choice_type == True then the user has entered multiple input
+	choice_type = single_or_multiple(apt_choice)
+
+	if choice_type is True:
+		choices = apt_choice.split(',')
+		for i in range(0, len(choices)):
+			execute_command('p', choices[i])
+	else:
+		execute_command('p', apt_choice)
+
+	# show menu agian after all execution complete
+	show_arch_menu()
 
 ####################################################################
 #                                                                  #
