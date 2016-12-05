@@ -18,7 +18,7 @@ import sys
 GIT_STATUS = 'git status'
 GIT_ADD = 'git add .'
 GIT_COMMIT = 'git commit -m "'
-GIT_PUSH_MASTER = 'git push -u origin master'
+GIT_PUSH = 'git push -u origin '
 
 def main():
 	# view status
@@ -31,7 +31,8 @@ def main():
 		command(GIT_ADD)
 		commit_message = raw_input('Enter commit message: ')
 		command(GIT_COMMIT + commit_message + '"')
-		command(GIT_PUSH_MASTER)
+		branch = raw_input('to which branch ? ')
+		command(GIT_PUSH + branch)
 	else:
 		print 'Exiting script now ...'
 		sys.exit()
