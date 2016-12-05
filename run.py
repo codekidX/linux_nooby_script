@@ -209,6 +209,7 @@ def execute_command(the_pm, the_choice):
 
 
 	if cl_choice is 'ax' or 'px':
+		command('clear')
 		sys.exit()
 	else:
 		# all hail the mighty script execute_command starts NOW !!!
