@@ -11,7 +11,7 @@ Welcome to Puppet Script!
 
 Trouble setting up your favorite linux distro by searching commands online and taking up your valuable time ? Puppet script is here. :grin:
 
-Puppet script is built with python with community-level integration support. **Meaning**, anyone of you can add commands to this project without any knowledge of coding or even pint of sweat. See the **contributions wiki**
+Puppet script is built with python with community-level integration support. **Meaning**, anyone of you can add commands to this project without any knowledge of coding or even pint of sweat. See the **contributions wiki** - [Click here](https://github.com/codekidX/puppet_script/wiki/Contribution-guide)
 
 ----------
 
