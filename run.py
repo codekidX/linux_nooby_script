@@ -208,6 +208,10 @@ def execute_command(the_pm, the_choice):
 			cl_choice.append('_1')
 
 
+	if cl_choice is 'ax' or 'px':
+		sys.exit()
+
+
 	# all hail the mighty script execute_command starts NOW !!!
 	command(cl_dict[cl_choice])
 	# clear screen after each command
