@@ -18,7 +18,7 @@ import sys
 import ast
 
 #constants
-INTEGRATE_HOME = 'cp puppet.py ~/'
+INTEGRATE_HOME = 'cp puppet ~/'
 COMMANDS_CL_FILE = None
 COMMANDS_PAL_FILE = None
 COMMAND_GET_CL = None
