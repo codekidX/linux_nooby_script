@@ -12,12 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-##########################################################################
-#                                                                        #
-#             Codekid's Noobs Script for Linux Newbies                   #
-#                                                                        #
-##########################################################################
-
 import os
 import shutil
 import sys
@@ -275,7 +269,8 @@ def execute_command(the_pm, the_choice):
 	else:
 		# all hail the mighty script execute_command starts NOW !!!
 		# print 'Entered choice execution' #LOG
-		command(cl_dict[cl_choice])
+		split_and_execute(cl_dict[cl_choice])
+		split
 		# clear screen after each command
 		command('clear')
 
@@ -295,7 +290,15 @@ def extract_name_from_link(link):
 
 def list_command():
 	return 'chmod +x ' + COMMANDS_PAL_FILE + ' && ./' + COMMANDS_PAL_FILE
-	
+
+def split_and_execute(cmd_choice):
+	if cmd_choice.rfind('|'):
+		command_list = cmd_choice.split('|')
+		for i in range(0, len(command_list)):
+			command(command_list[i].strip())
+	else:
+		command(cmd_choice)
+
 
 if __name__ == '__main__':
 	main()
