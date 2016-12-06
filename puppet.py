@@ -270,7 +270,6 @@ def execute_command(the_pm, the_choice):
 		# all hail the mighty script execute_command starts NOW !!!
 		# print 'Entered choice execution' #LOG
 		split_and_execute(cl_dict[cl_choice])
-		split
 		# clear screen after each command
 		command('clear')
 
