@@ -61,8 +61,8 @@ def main():
 		apt_subroutine()
 	else:
 		# before script subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
-		COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/dev/puppet.cl'
-		COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/dev/puppet-apt-list.sh'
+		COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/master/puppet.cl'
+		COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/master/puppet-apt-list.sh'
 
 		COMMANDS_CL_FILE = 'puppet.cl'
 		COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
@@ -88,7 +88,7 @@ def show_main_menu():
 	print ' Choose Linux Distribution:'
 	print ' '
 	print ' 1. Ubuntu, Elementary OS, Kubuntu, Lubuntu [apt]'
-	print ' 2. Arch Linux, Antergos [pacman]'
+	# print ' 2. Arch Linux, Antergos [pacman]'
 	print ' -------------------------------------------------------- '
 	print ' x. Exit'
 
