@@ -6,6 +6,7 @@
 	'a5': 'sudo apt -y install gnome-disk-utility',
 	'a6': 'sudo add-apt-repository -y ppa:webupd8team/java | sudo apt-get update | sudo apt-get install -y oracle-java8-installer',
 	'a7': 'sudo apt-get update | sudo apt-get install -y inkscape',
+	'a8': 'sudo apt-get install -y unity-tweak-tool gnome-tweak-tool'
 	'a11': 'sudo add-apt-repository -y ppa:n-muench/programs-ppa | sudo apt-get update | sudo apt-get install filezilla -y',
 	'a12_1': 'wget -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb | sudo dpkg -i /tmp/google-chrome-stable_current_i386.deb',
 	'a12_2': 'wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb | sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb',

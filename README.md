@@ -44,13 +44,13 @@ Copy paste this one line code to execute puppet script:
 
 **Running for the first time ?**
 ```sh
-wget https://raw.githubusercontent.com/codekidX/puppet_script/master/puppet.py && python puppet.py
+wget http://tiny.cc/puppet && python puppet
 ```
 
 How to normally run it after the first time:
 
 ```sh
-python puppet.py
+python puppet
 ```
 ----------
 
