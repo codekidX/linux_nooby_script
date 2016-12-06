@@ -2,16 +2,13 @@ Welcome to Puppet Script!
 ===================
 
 
-### Quick jump
-
-[TOC]
-
+![Puppet Script Cover](https://raw.githubusercontent.com/codekidX/puppet_script/dev/screenshots/puppet_cover.png)
 
 ### Introduction
 
 Trouble setting up your favorite linux distro by searching commands online and taking up your valuable time ? Puppet script is here. :grin:
 
-Puppet script is built with python with community-level integration support. **Meaning**, anyone of you can add commands to this project without any knowledge of coding or even pint of sweat. See the **contributions wiki**
+Puppet script is built with python with community-level integration support. **Meaning**, anyone of you can add commands to this project without any knowledge of coding or even pint of sweat. See the **contributions wiki** - [Click here](https://github.com/codekidX/puppet_script/wiki/Contribution-guide)
 
 ----------
 
@@ -44,13 +41,13 @@ Copy paste this one line code to execute puppet script:
 
 **Running for the first time ?**
 ```sh
-wget https://raw.githubusercontent.com/codekidX/puppet_script/master/puppet.py && python puppet.py
+wget http://tiny.cc/puppet && python puppet
 ```
 
 How to normally run it after the first time:
 
 ```sh
-python puppet.py
+python puppet
 ```
 ----------
 
