@@ -70,7 +70,7 @@ def main():
 		CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
 		PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
 
-		# get_cl()
+		get_cl()
 		# ask users if they want to copy run.py to home directory
 		home_system_integration()
 

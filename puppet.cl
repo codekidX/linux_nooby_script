@@ -13,5 +13,4 @@
 	'a22': 'sudo add-apt-repository -y ppa:webupd8team/atom | sudo apt -y update | sudo apt -y install atom',
 	'a31': 'sudo apt-get update | sudo apt-get install vlc browser-plugin-vlc -y',
 	'a32': 'sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder | sudo apt-get update | sudo apt-get install -y simplescreenrecorder'
-'
 }
