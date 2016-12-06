@@ -61,8 +61,8 @@ def main():
 		apt_subroutine()
 	else:
 		# before script subroutine is called cl [commands-list] extraction subroutine is called to dump the command list
-		COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/dev/puppet.cl'
-		COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/linux_nooby_script/dev/puppet-apt-list.sh'
+		COMMAND_GET_CL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/dev/puppet.cl'
+		COMMAND_GET_PAL = 'wget https://raw.githubusercontent.com/codekidX/puppet_script/dev/puppet-apt-list.sh'
 
 		COMMANDS_CL_FILE = 'puppet.cl'
 		COMMANDS_PAL_FILE = 'puppet-apt-list.sh'
@@ -70,7 +70,7 @@ def main():
 		CL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_CL_FILE
 		PAL_PATH = os.path.dirname(os.path.abspath(__file__)) + "/" + COMMANDS_PAL_FILE
 
-		get_cl()
+		# get_cl()
 		# ask users if they want to copy run.py to home directory
 		home_system_integration()
 
