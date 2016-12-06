@@ -2,10 +2,7 @@ Welcome to Puppet Script!
 ===================
 
 
-### Quick jump
-
-[TOC]
-
+![Puppet Script Cover](https://raw.githubusercontent.com/codekidX/puppet_script/dev/screenshots/puppet_cover.png)
 
 ### Introduction
 
