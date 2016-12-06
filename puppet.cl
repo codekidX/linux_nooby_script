@@ -11,7 +11,7 @@
 	'a13': 'sudo add-apt-repository -y ppa:webupd8team/brackets | sudo apt-get update | sudo apt-get install -y brackets',
 	'a21': 'sudo add-apt-repository -y ppa:webupd8team/sublime-text-3 | sudo apt -y update | sudo apt -y install sublime-text-installer',
 	'a22': 'sudo add-apt-repository -y ppa:webupd8team/atom | sudo apt -y update | sudo apt -y install atom',
-	'a31': 'sudo apt-get update | sudo apt-get install vlc browser-plugin-vlc -y'
+	'a31': 'sudo apt-get update | sudo apt-get install vlc browser-plugin-vlc -y',
 	'a32': 'sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder | sudo apt-get update | sudo apt-get install -y simplescreenrecorder'
 '
 }
