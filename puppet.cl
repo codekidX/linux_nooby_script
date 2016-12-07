@@ -15,5 +15,6 @@
 	'a22': 'sudo add-apt-repository -y ppa:webupd8team/atom | sudo apt -y update | sudo apt -y install atom',
 	'a31': 'sudo apt-get update | sudo apt-get install vlc browser-plugin-vlc -y',
 	'a32': 'sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder | sudo apt-get update | sudo apt-get install -y simplescreenrecorder',
-	'a41': 'sudo apt-add-repository -y ppa:numix/ppa | sudo apt-get update | sudo apt-get install -y numix-icon-theme numix-icon-theme-circle'
+	'a41': 'sudo apt-add-repository -y ppa:numix/ppa | sudo apt-get update | sudo apt-get install -y numix-icon-theme numix-icon-theme-circle',
+	'ac': 'echo "Cleaning Up" | sudo apt-get -f install | sudo apt-get autoremove | sudo apt-get -y autoclean | sudo apt-get -y clean'
 }
