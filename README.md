@@ -51,6 +51,15 @@ python puppet
 ```
 ----------
 
+How to contribute ? - Video
+-------------------
+
+Learn how you can add your packages to the project
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5g3OAynoulw/0.jpg)](https://www.youtube.com/watch?v=5g3OAynoulw)
+
+----------
+
 ### Support Puppet Script Project
 
 Nothing more than adding your favorite commands is needed for supporting this project. Let is know **how you feel** or **drop some ideas** by visiting the project website [project home](http://ashishshekar.esy.es/projects/puppet-script-project.html) or if you have any issue with the script, you can simply go to the issues tab above or click here [issue-tacker](https://github.com/codekidX/puppet_script/issues)  to make it really cool script ever.
